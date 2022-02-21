@@ -341,7 +341,7 @@ public class Main {
 
         int decimalNumber = 0;
 
-        for (int i = 0; binaryNumber > 0; i++, binaryNumber /= 1) {
+        for (int i = 0; binaryNumber > 0; i++, binaryNumber /= 10) {
 
             decimalNumber += (int) (binaryNumber % 10 * Math.pow(2, i));
 
