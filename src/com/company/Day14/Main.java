@@ -1,5 +1,6 @@
 package com.company.Day14;
 
+import java.time.LocalTime;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -94,14 +95,14 @@ public class Main {
 //        System.out.print("Enter string - ");
 //        bin2Dec(scan.next());
 //
-        //Test exercise 12
-        System.out.print("Enter string - ");
-        String str = scan.next();
-
-        System.out.println("In the string - " + str
-                + " count - " + countsDuplicateChar(str) +
-                " duplicate char.");
-
+//        //Test exercise 12
+//        System.out.print("Enter string - ");
+//        String str = scan.next();
+//
+//        System.out.println("In the string - " + str
+//                + " count - " + countsDuplicateChar(str) +
+//                " duplicate char.");
+//
 //
 //        //Test exercise 13
 //
@@ -118,8 +119,14 @@ public class Main {
 //
 //        System.out.print("Enter char - ");
 //        char ch =  scan.next().charAt(0);
+//        System.out.println(LocalTime.now());
 //        System.out.println("The count occurrences in string - " + str
 //                + " of char - " + ch + " is " + occurrencesOfChar(str, ch));
+//        System.out.println(LocalTime.now());
+
+        LocalTime timeStart = LocalTime.of(00, 00, 00);
+        LocalTime timeStop = LocalTime.of(00, 01, 00);
+        stopwatch(timeStart, timeStop);
 
     }
 
@@ -429,12 +436,36 @@ public class Main {
 
                 count++;
 
-                i = i + countRange + 1;
+                i = i + countRange;
             }
         }
 
         return count;
     }
+
+//    /**
+//     * Counts duplicate characters from a given string
+//     * @param str String type
+//     * @return int type
+//     */
+//    public static int countsDuplicateChar_2(String str) {
+//
+//        int count = 0;
+//
+//        StringBuilder strBuild = new StringBuilder(str);
+//
+//        for (int i = 0; i < strBuild.length(); i++) {
+//
+//            if(str.indexOf(strBuild.charAt(i)) == str.lastIndexOf(strBuild.charAt(i))){
+//
+//                count++;
+//
+//                strBuild.replace(i, i + 1, "");
+//            }
+//        }
+//
+//        return count;
+//    }
 
     //Exercise 13
 
@@ -483,16 +514,10 @@ public class Main {
      */
     public static boolean occurrencesOfChar(String str, char ch) {
 
-        char[] strArray = str.toCharArray();
+        if(str.indexOf(ch) >= 0){
 
-        for (int i = 0; i < strArray.length; i++) {
-
-            if (ch == strArray[i]) {
-
-                return true;
-            }
+            return true;
         }
-
         return false;
     }
 
@@ -570,6 +595,22 @@ public class Main {
                     minChar = array[i];
                 }
             }
+        }
+    }
+
+    //Data Time methods
+
+    public static void stopwatch(LocalTime start, LocalTime stop){
+
+//        LocalTime timeStart = LocalTime.of(00, 00, 00);
+//        LocalTime timeStop = LocalTime.of(00, 01, 00);
+
+        LocalTime upTo = start;
+
+        while (upTo.isBefore(stop)){
+
+            upTo = upTo.plusSeconds(1);
+            System.out.println(upTo);
         }
     }
 }
