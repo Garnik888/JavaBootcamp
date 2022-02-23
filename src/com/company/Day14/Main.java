@@ -296,12 +296,8 @@ public class Main {
      */
     public static boolean isPalindrome(String str) {
 
-        if (str.toLowerCase(Locale.ROOT).equals(reversString(str).toLowerCase(Locale.ROOT))) {
+        return str.toLowerCase(Locale.ROOT).equals(reversString(str).toLowerCase(Locale.ROOT));
 
-            return true;
-        }
-
-        return false;
     }
 
     //Exercise 9
@@ -341,26 +337,9 @@ public class Main {
 
         for (char i : strArray) {
 
-            switch (i) {
-                case '0':
-                case '1':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case 'a':
-                case 'b':
-                case 'c':
-                case 'd':
-                case 'i':
-                case 'f':
-                    break;
-                default:
-                    return false;
+            if(!(i >=  '0' && i <= '9'  || i >= 'a' && i <= 'f')){
+
+                return false;
             }
         }
 
@@ -404,6 +383,7 @@ public class Main {
 
     /**
      * Counts duplicate characters from a given string
+     *
      * @param str String type
      * @return int type
      */
@@ -421,7 +401,7 @@ public class Main {
 
             for (int j = i + 1; j < strArray.length; j++) {
 
-                if(strArray[i] == strArray[j]){
+                if (strArray[i] == strArray[j]) {
 
                     countRange++;
 
@@ -432,7 +412,7 @@ public class Main {
 
             }
 
-            if(countRange > 0){
+            if (countRange > 0) {
 
                 count++;
 
@@ -503,7 +483,7 @@ public class Main {
         return firstChar;
     }
 
-    //Exercise 14
+    //Exercise 14??????????????????????????????????????????????????
 
     /**
      * Counts occurrences of a certain character in a given string
@@ -514,7 +494,7 @@ public class Main {
      */
     public static boolean occurrencesOfChar(String str, char ch) {
 
-        if(str.indexOf(ch) >= 0){
+        if (str.indexOf(ch) >= 0) {
 
             return true;
         }
@@ -600,14 +580,14 @@ public class Main {
 
     //Data Time methods
 
-    public static void stopwatch(LocalTime start, LocalTime stop){
+    public static void stopwatch(LocalTime start, LocalTime stop) {
 
 //        LocalTime timeStart = LocalTime.of(00, 00, 00);
 //        LocalTime timeStop = LocalTime.of(00, 01, 00);
 
         LocalTime upTo = start;
 
-        while (upTo.isBefore(stop)){
+        while (upTo.isBefore(stop)) {
 
             upTo = upTo.plusSeconds(1);
             System.out.println(upTo);
