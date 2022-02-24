@@ -483,7 +483,7 @@ public class Main {
         return firstChar;
     }
 
-    //Exercise 14??????????????????????????????????????????????????
+    //Exercise 14
 
     /**
      * Counts occurrences of a certain character in a given string
@@ -492,13 +492,26 @@ public class Main {
      * @param ch  char type
      * @return boolean type
      */
-    public static boolean occurrencesOfChar(String str, char ch) {
+    public static int occurrencesOfChar(String str, char ch) {
 
-        if (str.indexOf(ch) >= 0) {
+        int count =0;
 
-            return true;
+        if (!(str.indexOf(ch) >= 0)) {
+
+            return count;
         }
-        return false;
+
+        char [] strArray = str.toCharArray();
+
+        for (int i = 0; i < strArray.length; i++) {
+
+            if(strArray[i] == ch){
+
+                count++;
+            }
+        }
+
+        return count;
     }
 
     // My necessary methods

@@ -63,19 +63,19 @@ public class Main {
 //
 //        //Test exercise 10
 //
+        System.out.print("Enter row - ");
+        int row = scan.nextInt();
+//
+        System.out.print("Enter column - ");
+        printMultiplicationTable(row, scan.nextInt());
+//
+//        //Test exercise 11
+//
 //        System.out.print("Enter row - ");
 //        int row = scan.nextInt();
 //
 //        System.out.print("Enter column - ");
-//        printMultiplicationTable(row, scan.nextInt());
-//
-        //Test exercise 11
-
-        System.out.print("Enter row - ");
-        int row = scan.nextInt();
-
-        System.out.print("Enter column - ");
-        createMatrixDiagonalADD(row, scan.nextInt());
+//        createMatrixDiagonalADD(row, scan.nextInt());
 //
 //        //Test exercise 12
 //
@@ -196,8 +196,6 @@ public class Main {
             start -= stop;
         }
 
-        int stopDig = stop / 1000;
-
         for (int i = start; i <= stop; i++) {
 
             if (i == reversNumber(i)) {
@@ -227,7 +225,7 @@ public class Main {
         }
     }
 
-    //Exercise 7
+    //Exercise 7???????
 
     /**
      * Print checkerboard
@@ -240,7 +238,13 @@ public class Main {
 
             for (int j = 0; j < boardSIze; j++) {
 
-                System.out.print(j % 2 == 0 ? "O " : "X ");
+                if (i % 2 == 0) {
+
+                    System.out.print(j % 2 == 0 ? "O " : "X ");
+                } else {
+
+                    System.out.print(j % 2 == 0 ? "X " : "O ");
+                }
             }
 
             System.out.println();
@@ -333,33 +337,33 @@ public class Main {
         int[][] matrix = new int[row][col];
         int countCol = 0;
         int countRow = 0;
-        int loopSize = row % 2 == 0 ? col * row + row / 2 : col * row + row / 2 + 1;
+        int loopSize = col * row;
 
-        for (int i = 0; i <= loopSize; i++) {
+        for (int i = 0; i < loopSize; i++) {
 
-            if (countCol < col) {
+            matrix[countRow][countCol] = countCol * countRow;
 
-                matrix[countRow][countCol] = countCol * countRow;
+            countCol++;
 
-                countCol++;
-            } else {
+            if (countCol == col) {
 
                 countCol = 0;
 
                 countRow++;
             }
+
+
         }
 
-        printMatrix(matrix);
+        printMatrix2(matrix);
     }
 
     //Exercise 11
 
     /**
-     *
      * Print matrix diagonal add
      *
-     * @param row int type
+     * @param row    int type
      * @param column int type
      */
     public static void createMatrixDiagonalADD(int row, int column) {
