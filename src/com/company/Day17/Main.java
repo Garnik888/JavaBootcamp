@@ -1,5 +1,7 @@
 package com.company.Day17;
 
+import java.util.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -41,11 +43,21 @@ public class Main {
 //        fahrenheitCelsius(2.0f, 1);
 //        System.out.println();
 //        fahrenheitCelsius(2, 32.0f);
+//
+//        //Test Exercise 10
+//
+//        remainder(331);
+//        remainder(331, 5);
+//
+//        String str = "14/2+12-10+2*5/2-41";
+//        System.out.println(str);
+//        stringDigitalExpression(str);
 
-        //Test Exercise 10
-
-        remainder(331);
-        remainder(331, 5);
+        String s_1 = "8788";
+        String s_2 = "112";
+        System.out.println(s_1);
+        System.out.println(s_2);
+        System.out.println(sumTwoStringNumbers(s_1, s_2));
 
     }
 
@@ -74,7 +86,7 @@ public class Main {
         return (a + b);
     }
 
-    public static float addNum_1(int a, int b) {
+    public static float addNum(int a, float b) {
 
         return (float) (a + b);
     }
@@ -83,26 +95,32 @@ public class Main {
 
     public static void print(int[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
+        System.out.print("[");
+        for (int i : arr) {
 
-            System.out.print(arr[i] + " ");
+            System.out.print(i + ", ");
         }
+        System.out.print("]");
     }
 
     public static void print(float[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
+        System.out.print("[");
+        for (float i : arr) {
 
-            System.out.print(arr[i] + " ");
+            System.out.print(i + ", ");
         }
+        System.out.print("]");
     }
 
     public static void print(double[] arr) {
 
-        for (int i = 0; i < arr.length; i++) {
+        System.out.print("[");
+        for (double i : arr) {
 
-            System.out.print(arr[i] + " ");
+            System.out.print(i + ", ");
         }
+        System.out.print("]");
     }
 
     //Exercise 5
@@ -148,7 +166,12 @@ public class Main {
      */
     public static boolean search(int[] array, int argument, int index) {
 
-        return array[index] == argument;
+        if (index < array.length) {
+
+            return array[index] == argument;
+        }
+
+        return false;
     }
 
     //Exercise 6
@@ -313,7 +336,7 @@ public class Main {
      * divided to second parameter
      *
      * @param number int typ
-     * @param div int type
+     * @param div    int type
      */
     public static void remainder(int number, int div) {
 
@@ -321,10 +344,157 @@ public class Main {
                 div + " = " + sumDigits(number) % div);
     }
 
+    //Other exercise
+
+    /**
+     * Print digital expression in string
+     *
+     * @param str String typ
+     */
+    public static void stringDigitalExpression(String str) {
+
+        List<String> strList = stringList(str);
+
+        System.out.println(strList);
+
+        for (int i = 0; i < strList.size(); i++) {
+
+            if ("*".equals(strList.get(i))) {
+
+                int strNum = Integer.parseInt(strList.get(i - 1)) * Integer.parseInt(strList.get(i + 1));
+
+                strList.add(i - 1, String.valueOf(strNum));
+
+                strList.remove(i);
+                strList.remove(i);
+                strList.remove(i);
+
+                i--;
+            } else if ("/".equals(strList.get(i))) {
+
+                int strNum = Integer.parseInt(strList.get(i - 1)) / Integer.parseInt(strList.get(i + 1));
+
+                strList.add(i - 1, String.valueOf(strNum));
+
+                strList.remove(i);
+                strList.remove(i);
+                strList.remove(i);
+
+                i--;
+            }
+
+        }
+
+        for (int i = 0; i < strList.size(); i++) {
+
+            if ("+".equals(strList.get(i))) {
+
+                int strNum = Integer.parseInt(strList.get(i - 1)) + Integer.parseInt(strList.get(i + 1));
+
+                strList.add(i - 1, String.valueOf(strNum));
+
+                strList.remove(i);
+                strList.remove(i);
+                strList.remove(i);
+
+                i--;
+            } else if ("-".equals(strList.get(i))) {
+
+                int strNum = Integer.parseInt(strList.get(i - 1)) - Integer.parseInt(strList.get(i + 1));
+
+                strList.add(i - 1, String.valueOf(strNum));
+
+                strList.remove(i);
+                strList.remove(i);
+                strList.remove(i);
+
+                i--;
+            }
+        }
+
+        System.out.println(strList);
+    }
+
+    public static String sumTwoStringNumbers(String strNum_1, String strNum_2) {
+
+        StringBuilder strBuild_1;
+        StringBuilder strBuild_2;
+
+        if (strNum_1.length() >= strNum_2.length()) {
+
+            strBuild_1 = new StringBuilder(strNum_1);
+            strBuild_2 = new StringBuilder(strNum_2);
+        } else {
+
+            strBuild_1 = new StringBuilder(strNum_2);
+            strBuild_2 = new StringBuilder(strNum_1);
+        }
+
+        int sumString;
+        int decNum = 0;
+
+
+        for (int i = 0; i < strBuild_2.length(); i++) {
+
+            // sum last two number in two string
+            sumString = Integer.parseInt(strBuild_1.substring(strBuild_1.length() - i - 1, strBuild_1.length() - i))
+                    + Integer.parseInt(strBuild_2.substring(strBuild_2.length() - i - 1, strBuild_2.length() - i))
+                    //plus decNum if last sum big 9 pius 1 else plus 0
+                    + decNum;
+
+            if (i < strBuild_2.length() - 1) {
+
+                if (sumString > 9) {
+
+                    strBuild_1.replace(strBuild_1.length() - i - 1,
+                            strBuild_1.length() - i, Integer.valueOf(sumString % 10).toString());
+
+                    decNum = 1;
+
+
+                } else {
+
+                    strBuild_1.replace(strBuild_1.length() - i - 1,
+                            strBuild_1.length() - i, Integer.toString(sumString));
+
+                    decNum = 0;
+                }
+            } else {
+
+                if (strBuild_1.length() == strBuild_2.length()) {
+
+                    strBuild_1.replace(strBuild_1.length() - i - 1,
+                            strBuild_1.length() - i, Integer.toString(sumString));
+                } else {
+
+                    if (sumString > 9) {
+
+                        strBuild_1.replace(strBuild_1.length() - i - 1,
+                                strBuild_1.length() - i, Integer.valueOf(sumString % 10).toString());
+
+
+                        sumString = Integer.parseInt(strBuild_1.substring(strBuild_1.length() - i - 2,
+                                strBuild_1.length() - i - 1)) + decNum;
+
+                        strBuild_1.replace(strBuild_1.length() - i - 2,
+                                strBuild_1.length() - i - 1, Integer.toString(sumString));
+                    } else {
+
+                        strBuild_1.replace(strBuild_1.length() - i - 1,
+                                strBuild_1.length() - i, Integer.toString(sumString));
+                    }
+                }
+            }
+        }
+
+        return strBuild_1.toString();
+    }
+
     // My necessary methods
 
     /**
      * Calculate sum of digits number
+     *
      * @param number int type
      * @return int type
      */
@@ -340,5 +510,55 @@ public class Main {
         }
 
         return sum;
+    }
+
+    /**
+     * Sorting list program
+     *
+     * @param array char [] array
+     */
+    public static void sortedListExpression(char[] array) {
+
+        for (int i = 0; i < array.length; i++) {
+
+            for (int j = i; j < array.length; j++) {
+
+
+            }
+        }
+    }
+
+    /**
+     * Cut string i klitl string numbers and operators
+     *
+     * @param str String type
+     * @return List<String> type
+     */
+    public static List<String> stringList(String str) {
+
+        char[] ch = str.toCharArray();
+
+        List<String> strList = new ArrayList<>();
+
+        int count = 0;
+
+        for (int i = 0; i < ch.length; i++) {
+
+            if (ch[i] >= '0' && ch[i] <= '9' && i < ch.length - 1) {
+
+                count++;
+
+            } else if (i == ch.length - 1) {
+
+                strList.add(str.substring(i - count));
+            } else {
+
+                strList.add(str.substring(i - count, i));
+                strList.add(str.substring(i, i + 1));
+                count = 0;
+            }
+        }
+
+        return strList;
     }
 }
