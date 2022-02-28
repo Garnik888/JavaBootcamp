@@ -18,6 +18,6 @@ public class StoreValidations {
 
     public static boolean phoneNumberLength(int phoneNumber){
 
-        return (phoneNumber > 0 && phoneNumber / 10_000_000 < 10 && phoneNumber / 10_000_000 > 0);
+        return (phoneNumber > 0 && phoneNumber / 10000_000 < 10 && phoneNumber / 10_000_000 > 0);
     }
 }
