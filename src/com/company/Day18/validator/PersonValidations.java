@@ -29,7 +29,18 @@ public class PersonValidations {
 
     public static boolean passportIDValid(String passportId) {
 
-        return (passportId != null &&"AN".equalsIgnoreCase(passportId.substring(0, 2))
-                && passportId.length() - 2 == 6);
+        if (passportId != null && "AN".equalsIgnoreCase(passportId.substring(0, 2))
+                && passportId.length() - 2 == 6) {
+
+            for (char ch : passportId.substring(2).toCharArray()) {
+
+                return (ch >= '0' && ch < '9');
+
+            }
+
+        }
+
+        return false;
     }
 }
+
