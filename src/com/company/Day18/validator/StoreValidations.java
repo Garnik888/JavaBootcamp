@@ -13,7 +13,7 @@ public class StoreValidations {
 
     public static boolean nameLength(String name) {
 
-        return (name.length() > 3);
+        return (name != null && name.length() > 3);
     }
 
     public static boolean phoneNumberLength(int phoneNumber){

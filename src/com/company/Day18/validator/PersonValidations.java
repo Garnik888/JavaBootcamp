@@ -3,18 +3,18 @@ package com.company.Day18.validator;
 
 public class PersonValidations {
 
-    private PersonValidations(){
+    private PersonValidations() {
 
     }
 
     public static boolean firstNameLength(String firstName) {
 
-        return (firstName.length() > 3 && firstName.length() < 15);
+        return (firstName != null && firstName.length() > 3 && firstName.length() < 15);
     }
 
     public static boolean lastNameLength(String lastName) {
 
-        return (lastName.length() > 6 && lastName.length() < 20);
+        return (lastName != null && lastName.length() > 6 && lastName.length() < 20);
     }
 
     public static boolean ageRange(int age) {
@@ -24,11 +24,12 @@ public class PersonValidations {
 
     public static boolean genderValid(String gender) {
 
-        return ("male".equalsIgnoreCase(gender) || "female".equalsIgnoreCase(gender));
+        return (gender != null && "male".equalsIgnoreCase(gender) || "female".equalsIgnoreCase(gender));
     }
 
     public static boolean passportIDValid(String passportId) {
 
-        return ("AN".equalsIgnoreCase(passportId.substring(0, 2)) && passportId.length() - 2 == 6);
+        return (passportId != null &&"AN".equalsIgnoreCase(passportId.substring(0, 2))
+                && passportId.length() - 2 == 6);
     }
 }
