@@ -84,22 +84,9 @@ public class Triangle {
         this.sideB = sideB;
         this.sideC = sideC;
 
-        if (sideA > sideB) {
-
-            if (sideA < sideC) {
-
-                return Math.sqrt(sideB * sideB + sideA * sideA) == sideC;
-            } else {
-
-                return Math.sqrt(sideB * sideB + sideC * sideC) == sideA;
-            }
-        } else if (sideB > sideC) {
-
-            return Math.sqrt(sideC * sideC + sideA * sideA) == sideB;
-        } else {
-
-            return Math.sqrt(sideB * sideB + sideA * sideA) == sideC;
-        }
+        return (Math.sqrt(sideB * sideB + sideA * sideA) == sideC ||
+                Math.sqrt(sideB * sideB + sideC * sideC) == sideA ||
+                Math.sqrt(sideC * sideC + sideA * sideA) == sideB);
     }
 
     /**
