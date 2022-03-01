@@ -1,5 +1,7 @@
 package com.company.Day18;
 
+import com.company.Day18.models.Triangle;
+
 import java.util.Scanner;
 
 public class Main {
