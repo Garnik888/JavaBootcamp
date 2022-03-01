@@ -6,17 +6,17 @@ public class Store {
     private int countOfWorkers;
     private String name;
     private int phoneNumber;
-    private int [] numbers;
+    private String[] numbers;
 
     //Constructor for Store class
-    public Store(int countOfWorkers, String name, int phoneNumber, int[] numbers) {
+    public Store(int countOfWorkers, String name, int phoneNumber, String[] numbers) {
         this.countOfWorkers = countOfWorkers;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.numbers = numbers;
     }
 
-    private Store(){
+    private Store() {
 
     }
 
@@ -45,13 +45,13 @@ public class Store {
         this.phoneNumber = phoneNumber;
     }
 
-    public int[] getNumbers() {
+    public String[] getNumbers() {
         return numbers;
     }
 
-    public void setNumbers(int[] numbers) {
+    public void setNumbers(String[] numbers) {
         this.numbers = numbers;
     }
 
-    
+
 }
