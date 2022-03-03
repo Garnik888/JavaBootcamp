@@ -1,10 +1,10 @@
 package com.company.day20.flyAble;
 
-public class Bird implements FlyAble{
+public class Airplane implements FlyAble{
 
     private boolean fly;
 
-    public Bird(boolean fly) {
+    public Airplane(boolean fly) {
         this.fly = fly;
     }
 
