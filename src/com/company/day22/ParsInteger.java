@@ -18,16 +18,15 @@ public class ParsInteger {
 
         Scanner scan = new Scanner(System.in);
 
-        int number;
+        String str;
 
         while (true) {
 
             System.out.print("Enter number - ");
-            String str = scan.nextLine();
+            str = scan.nextLine();
 
             try {
 
-                Integer.parseInt(str);
                 return Integer.parseInt(str);
             } catch (NumberFormatException e) {
 

@@ -6,8 +6,8 @@ public class DefaultStack implements Stack {
     private int index = 0;
     public static final int MAX_SIZE = 5;
 
-    public DefaultStack(int[] numbers) {
-        this.numbers = numbers;
+    public DefaultStack() {
+        this.numbers = new int[MAX_SIZE];
     }
 
     @Override
@@ -25,7 +25,7 @@ public class DefaultStack implements Stack {
         numbers[index] = val;
 
 
-            index++;
+        index++;
 
     }
 
@@ -54,9 +54,9 @@ public class DefaultStack implements Stack {
      */
     public void display() {
 
-        for (int i : numbers) {
+        for (int i = 0; i < index; i++) {
 
-            System.out.print(i + " ");
+            System.out.print(numbers[i] + " ");
         }
 
         System.out.println();

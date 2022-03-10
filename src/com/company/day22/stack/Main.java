@@ -8,7 +8,7 @@ public class Main {
 
         int [] arr = new int[DefaultStack.MAX_SIZE];
 
-        DefaultStack defaultStack = new DefaultStack(arr);
+        DefaultStack defaultStack = new DefaultStack();
 
         defaultStack.push(ParsInteger.parsInteger());
         defaultStack.push(ParsInteger.parsInteger());
@@ -22,6 +22,7 @@ public class Main {
         System.out.println(defaultStack.pop());
         System.out.println(defaultStack.pop());
         System.out.println(defaultStack.pop());
+        defaultStack.display();
         System.out.println(defaultStack.pop());
         System.out.println(defaultStack.pop());
 

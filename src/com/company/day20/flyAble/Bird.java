@@ -4,6 +4,8 @@ public class Bird implements FlyAble{
 
     private boolean fly;
 
+    public Bird(){}
+
     public Bird(boolean fly) {
         this.fly = fly;
     }
