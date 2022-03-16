@@ -4,6 +4,6 @@ public class StackIndexOutOfBoundsException extends RuntimeException{
 
     public StackIndexOutOfBoundsException(int size){
 
-        super("Auth of bound" + " max length of array mast be " + size);
+        super("Auth of bound max length of array mast be " + size);
     }
 }

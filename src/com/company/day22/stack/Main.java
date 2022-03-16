@@ -6,8 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int [] arr = new int[DefaultStack.MAX_SIZE];
-
         DefaultStack defaultStack = new DefaultStack();
 
         defaultStack.push(ParsInteger.parsInteger());

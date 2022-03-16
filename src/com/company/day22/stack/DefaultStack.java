@@ -2,9 +2,9 @@ package com.company.day22.stack;
 
 public class DefaultStack implements Stack {
 
-    private int[] numbers;
+    private final int[] numbers;
     private int index = 0;
-    public static final int MAX_SIZE = 5;
+    private static final int MAX_SIZE = 5;
 
     public DefaultStack() {
         this.numbers = new int[MAX_SIZE];
@@ -23,7 +23,6 @@ public class DefaultStack implements Stack {
         }
 
         numbers[index] = val;
-
 
         index++;
 
