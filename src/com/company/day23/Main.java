@@ -22,9 +22,9 @@ public class Main {
 
         System.out.println(linkedList.toString());
 
-//        linkedList.add(0,8);
-//
-//        System.out.println(linkedList.toString());
+        linkedList.add(0,8);
+
+        System.out.println(linkedList.toString());
 //
 //        int index = 4;
 //        System.out.println("Get element " + index + " = " +linkedList.get(index));

@@ -130,12 +130,23 @@ public class LinkedList implements List {
 
         Node findElement = head;
 
-        for (int i = 0; i < index; i++) {
+        if(index == 0) {
+
+            head = new Node(val, findElement);
+
+            size++;
+
+            return;
+        }
+
+        for (int i = 0; i < index - 1; i++) {
 
             findElement = findElement.next;
         }
 
-        findElement.setVal(val);
+        findElement.next = new Node(val, findElement.next);
+
+        size++;
 
     }
 
