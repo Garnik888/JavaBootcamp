@@ -160,19 +160,12 @@ public class LinkedList implements List {
             return;
         }
 
-        if (index == size) {
-
-            findElement = null;
-            size--;
-            return;
-        }
-
         for (int i = 0; i < index - 1; i++) {
 
             findElement = findElement.next;
         }
 
-        findElement.setNext(findElement.next.getNext());
+        findElement.setNext(findElement.next.next);
         size--;
     }
 
