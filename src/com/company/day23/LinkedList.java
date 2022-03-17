@@ -176,7 +176,7 @@ public class LinkedList implements List {
         StringBuilder strLink = new StringBuilder("[");
 
         if (size > 0) {
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; findElement != null; i++) {
 
                 strLink.append(findElement.getVal());
                 strLink.append(" -> ");
