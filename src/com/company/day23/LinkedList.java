@@ -1,15 +1,40 @@
 package com.company.day23;
 
+import java.lang.annotation.Inherited;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class LinkedList implements List {
+public class LinkedList implements List, Iterable<Integer> {
 
     //Fields of LinkedList class
     private int size = 0;
     private Node head;
 
     // Static native class
-    static class Node {
+    private class Node implements Iterator<Integer> {
+
+        //Fields of Node class
+        private int index = 0;
+        private int val;
+        private Node next;
+
+        //Constructor for Node class
+        public Node(int val, Node next) {
+            this.val = val;
+            this.next = next;
+        }
+
+        public Node() {
+
+        }
+
+        public int getIndex() {
+            return index;
+        }
+
+        public void setIndex(int index) {
+            this.index = index;
+        }
 
         public int getVal() {
             return val;
@@ -27,14 +52,20 @@ public class LinkedList implements List {
             this.next = next;
         }
 
-        //Fields of Node class
-        private int val;
-        private Node next;
+        Node findNode = head;
 
-        //Constructor for Node class
-        public Node(int val, Node next) {
-            this.val = val;
-            this.next = next;
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public Integer next() {
+            index++;
+            int value = findNode.val;
+            findNode = findNode.next;
+
+            return value;
         }
     }
 
@@ -123,14 +154,14 @@ public class LinkedList implements List {
      * */
     public void add(int index, int val) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
 
             throw new IndexOutOfBoundsException();
         }
 
         Node findElement = head;
 
-        if(index == 0) {
+        if (index == 0) {
 
             head = new Node(val, findElement);
 
@@ -202,6 +233,11 @@ public class LinkedList implements List {
 
 
         return strLink.toString();
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Node();
     }
 
 }
