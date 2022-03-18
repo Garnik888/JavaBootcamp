@@ -4,14 +4,14 @@ import java.lang.annotation.Inherited;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LinkedList implements List, Iterable<Integer> {
+public class LinkedList implements List{
 
     //Fields of LinkedList class
     private int size = 0;
     private Node head;
 
     // Static native class
-    private class Node implements Iterator<Integer> {
+    private static class Node {
 
         //Fields of Node class
         private int index = 0;
@@ -51,8 +51,15 @@ public class LinkedList implements List, Iterable<Integer> {
         public void setNext(Node next) {
             this.next = next;
         }
+    }
 
-        Node findNode = head;
+    private class LinkedListIterator implements Iterator<Integer>{
+
+        private int index;
+
+
+
+        Node lastElement = head;
 
         @Override
         public boolean hasNext() {
@@ -61,10 +68,10 @@ public class LinkedList implements List, Iterable<Integer> {
 
         @Override
         public Integer next() {
-            index++;
-            int value = findNode.val;
-            findNode = findNode.next;
 
+            int value = lastElement.val;
+            lastElement = lastElement.next;
+            index++;
             return value;
         }
     }
@@ -237,7 +244,7 @@ public class LinkedList implements List, Iterable<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new Node();
+        return new LinkedListIterator();
     }
 
 }
