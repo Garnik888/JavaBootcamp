@@ -109,7 +109,7 @@ public class LinkedList implements List, Iterable<Integer> {
      * */
     public int get(int index) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
 
             throw new IndexOutOfBoundsException();
         }
@@ -188,7 +188,7 @@ public class LinkedList implements List, Iterable<Integer> {
      * */
     public void delete(int index) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
 
             throw new IndexOutOfBoundsException();
         }

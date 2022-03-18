@@ -32,7 +32,7 @@ public class Main {
 //        System.out.println("Get element " + index + " = " +linkedList.get(index));
 //
 //        linkedList.delete(0);
-//        linkedList.delete(2);
+        linkedList.delete(2);
 //
 //        System.out.println("The siz of linkedList = " + linkedList.size());
 //
