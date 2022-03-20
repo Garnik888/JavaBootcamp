@@ -4,7 +4,7 @@ import java.lang.annotation.Inherited;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class LinkedList implements List{
+public class LinkedList implements List {
 
     //Fields of LinkedList class
     private int size = 0;
@@ -28,14 +28,6 @@ public class LinkedList implements List{
 
         }
 
-        public int getIndex() {
-            return index;
-        }
-
-        public void setIndex(int index) {
-            this.index = index;
-        }
-
         public int getVal() {
             return val;
         }
@@ -53,10 +45,9 @@ public class LinkedList implements List{
         }
     }
 
-    private class LinkedListIterator implements Iterator<Integer>{
+    private class LinkedListIterator implements Iterator<Integer> {
 
         private int index;
-
 
 
         Node lastElement = head;
@@ -90,30 +81,36 @@ public class LinkedList implements List{
         return head;
     }
 
+    /**
+     * Return LinkedList class length
+     *
+     * @return int type
+     */
     @Override
-    /*
-     *Return LinkedList class length
-     *@return int type
-     * */
     public int size() {
         return size;
     }
 
     @Override
-    /*
-     *This method define is the LinkedList class empty
-     *@return boolean type
-     * */
     public boolean isEmpty() {
-
         return size == 0;
     }
 
-    @Override
-    /*
+    /**
+     * This method define is the LinkedList class empty
+     *
+     * @return boolean type
+     * /
+     * @Override public boolean isEmpty() {
+     * <p>
+     * return size == 0;
+     * }
+     * <p>
+     * /**
      * This method return element in LinkedList class
      * in concrete please
-     * */
+     */
+    @Override
     public int get(int index) throws IndexOutOfBoundsException {
 
         if (index < 0 || index >= size) {
@@ -130,10 +127,10 @@ public class LinkedList implements List{
         return findElement.getVal();
     }
 
-    @Override
-    /*
+    /**
      * This method add new element in LinkedList class
-     * */
+     */
+    @Override
     public void add(int val) {
 
         Node lastElement = head;
@@ -154,11 +151,11 @@ public class LinkedList implements List{
         size++;
     }
 
-    @Override
     /*
      * This method add new element in LinkedList class
      * in concrete please
      * */
+    @Override
     public void add(int index, int val) throws IndexOutOfBoundsException {
 
         if (index < 0 || index >= size) {
@@ -195,7 +192,7 @@ public class LinkedList implements List{
      * */
     public void delete(int index) throws IndexOutOfBoundsException {
 
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
 
             throw new IndexOutOfBoundsException();
         }
