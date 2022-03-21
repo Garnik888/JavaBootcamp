@@ -1,4 +1,4 @@
-package com.company.day24;
+package com.company.day23;
 
 public interface MyList extends Iterable<Integer> {
 

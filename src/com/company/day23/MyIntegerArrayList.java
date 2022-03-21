@@ -1,4 +1,4 @@
-package com.company.day24;
+package com.company.day23;
 
 
 import java.util.Iterator;

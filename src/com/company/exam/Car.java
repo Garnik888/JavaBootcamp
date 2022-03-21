@@ -89,5 +89,3 @@ public class Car {
                 && Objects.equals(this.engine, car.engine)); //this.engine.equals(car.engine)
     }
 }
-
-class HHHHH{}
