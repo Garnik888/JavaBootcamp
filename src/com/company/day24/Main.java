@@ -13,7 +13,7 @@ public class Main {
 //        printIfHaseNotDuplicate(array);
 //
 //        System.out.println(countDuplicateCharInString("babayagga"));
-        System.out.println(firstNonRepeatCharInString("uuballbayyaggad"));
+        System.out.println(firstNonRepeatCharInString("uballbayyagad"));
 //        System.out.println(lengthWithoutRepeatingChar("abbal"));
     }
 
@@ -117,7 +117,7 @@ public class Main {
             }
         }
 
-        for (Character ch1 : charHashMap.keySet()) {
+        for (Character ch1: ch) {
 
             if(charHashMap.get(ch1) == 0) {
 
