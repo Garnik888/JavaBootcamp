@@ -1,4 +1,4 @@
-package com.company.Day19.accounting;
+package com.company.day19.accounting;
 
 public class FinancialAccount extends TaxAccounting {
 

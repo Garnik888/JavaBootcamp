@@ -1,22 +1,20 @@
 package com.company.day24;
 
-import com.company.day23.MyIntegerArrayList;
-
-import java.util.Iterator;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int array[] = {1, 2, 3, 4, 5, 1, 2, 3, 4};
+        int array[] = {1, 2, 3, 4, 2, 3};
 
-        System.out.println(haveDuplicate(array));
-
-        printIfHaseNotDuplicate(array);
-
-        System.out.println(countDuplicateCharInString("babayaga"));
-        System.out.println(firstNonRepeatCharInString("babayyaga"));
-        System.out.println(lengthWithoutRepeatingChar("babayyaag"));
+//        System.out.println(isHaveDuplicate(array));
+//
+//        printIfHaseNotDuplicate(array);
+//
+//        System.out.println(countDuplicateCharInString("babayagga"));
+        System.out.println(firstNonRepeatCharInString("uuballbayyaggad"));
+//        System.out.println(lengthWithoutRepeatingChar("abbal"));
     }
 
     /**
@@ -25,17 +23,15 @@ public class Main {
      * @param array int[] type
      * @return boolean type
      */
-    public static boolean haveDuplicate(int[] array) {
+    public static boolean isHaveDuplicate(int[] array) {
+
+        Set<Integer> integerSet = new HashSet<>();
 
         for (int i = 0; i < array.length; i++) {
 
-            for (int j = i + 1; j < array.length; j++) {
+            if (!integerSet.add(array[i])) {
 
-                if (array[i] == array[j]) {
-
-                    return true;
-                }
-
+                return true;
             }
         }
 
@@ -49,25 +45,24 @@ public class Main {
      */
     public static void printIfHaseNotDuplicate(int[] array) {
 
-        boolean flag;
+        Map<Integer, Integer> intHashMap = new HashMap<>();
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i : array) {
 
-            flag = true;
-
-            for (int j = 0; j < array.length; j++) {
-
-                if (array[i] == array[j] && i != j) {
-
-                    flag = false;
-                }
-            }
-
-            if (flag) {
-
-                System.out.println(array[i]);
+            if (intHashMap.get(i) == null) {
+                intHashMap.put(i, 0);
+            } else {
+                intHashMap.put(i, 1);
             }
         }
+
+        for (Integer key : intHashMap.keySet()) {
+            if (intHashMap.get(key) == 0) {
+
+                System.out.println(key);
+            }
+        }
+
     }
 
     /**
@@ -78,21 +73,22 @@ public class Main {
      */
     public static int countDuplicateCharInString(String str) {
 
+        Map<Character, Integer> charHashMap = new HashMap<>();
         char[] ch = str.toCharArray();
         int countChar = 0;
 
-        for (int i = 0; i < ch.length; i++) {
+        for (char ch1 : ch) {
+            if (charHashMap.get(ch1) == null) {
+                charHashMap.put(ch1, 0);
+            } else {
 
-            int count = 0;
-            for (int j = i + 1; j < ch.length; j++) {
-
-                if (ch[i] == ch[j]) {
-
-                    count++;
-                }
+                charHashMap.put(ch1, 1);
             }
+        }
 
-            if (count == 1) {
+        for (Character ch1 : charHashMap.keySet()) {
+
+            if(charHashMap.get(ch1) > 0) {
 
                 countChar++;
             }
@@ -109,24 +105,23 @@ public class Main {
      */
     public static char firstNonRepeatCharInString(String str) {
 
+        Map<Character, Integer> charHashMap = new HashMap<>();
         char[] ch = str.toCharArray();
-        boolean flag;
 
-        for (int i = 0; i < ch.length; i++) {
+        for (char ch1 : ch) {
+            if (charHashMap.get(ch1) == null) {
+                charHashMap.put(ch1, 0);
+            } else {
 
-            flag = true;
-            for (int j = 0; j < ch.length; j++) {
-
-                if (ch[i] == ch[j] && i != j) {
-
-                    flag = false;
-                    break;
-                }
+                charHashMap.put(ch1, 1);
             }
+        }
 
-            if (flag) {
+        for (Character ch1 : charHashMap.keySet()) {
 
-                return ch[i];
+            if(charHashMap.get(ch1) == 0) {
+
+                return ch1;
             }
         }
 
@@ -134,27 +129,21 @@ public class Main {
     }
 
     /**
-     *Return length without repeating char
+     * Return length without repeating char
+     *
      * @param str string type
      * @return int type
      */
     public static int lengthWithoutRepeatingChar(String str) {
 
-        char [] ch = str.toCharArray();
-        int lengthWithoutRepeatingChar = ch.length;
+        char[] ch = str.toCharArray();
+        Set<Character> integerSet = new HashSet<>();
 
         for (int i = 0; i < ch.length; i++) {
 
-            for (int j = i + 1; j < ch.length; j++) {
-
-                if(ch[i] == ch[j]) {
-
-                    lengthWithoutRepeatingChar--;
-                    break;
-                }
-            }
+            integerSet.add(ch[i]);
         }
 
-        return lengthWithoutRepeatingChar;
+        return integerSet.size();
     }
 }

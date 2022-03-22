@@ -1,4 +1,4 @@
-package com.company.Day19.animal;
+package com.company.day19.animal;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package com.company.Day11;
+package com.company.day11;
 
 import java.util.Locale;
 import java.util.Scanner;

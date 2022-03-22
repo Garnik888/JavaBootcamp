@@ -1,6 +1,6 @@
-package com.company.Day18;
+package com.company.day18;
 
-import com.company.Day18.models.Triangle;
+import com.company.day18.models.Triangle;
 
 import java.util.Scanner;
 

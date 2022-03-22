@@ -1,6 +1,6 @@
-package com.company.Day19.company;
+package com.company.day19.company;
 
-import com.company.Day19.company.Accounting;
+import com.company.day19.company.Accounting;
 
 public class Main {
 

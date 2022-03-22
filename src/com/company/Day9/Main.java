@@ -1,4 +1,4 @@
-package com.company.Day9;
+package com.company.day9;
 
 import java.util.Locale;
 import java.util.Scanner;

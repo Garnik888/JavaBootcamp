@@ -1,4 +1,4 @@
-package com.company.Day19.company;
+package com.company.day19.company;
 
 public class SEO extends Marketing{
 

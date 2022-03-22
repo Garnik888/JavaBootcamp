@@ -1,4 +1,4 @@
-package com.company.Day18.validator;
+package com.company.day18.validator;
 
 
 public class PersonValidations {

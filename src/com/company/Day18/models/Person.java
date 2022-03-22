@@ -1,4 +1,4 @@
-package com.company.Day18.models;
+package com.company.day18.models;
 
 public class Person {
 

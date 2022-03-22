@@ -1,4 +1,4 @@
-package com.company.Day17;
+package com.company.day17;
 
 import java.util.*;
 

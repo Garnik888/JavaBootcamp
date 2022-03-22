@@ -1,6 +1,6 @@
-package com.company.Day19.animal;
+package com.company.day19.animal;
 
-import com.company.Day19.animal.Animal;
+import com.company.day19.animal.Animal;
 
 public class Dog extends Animal {
 

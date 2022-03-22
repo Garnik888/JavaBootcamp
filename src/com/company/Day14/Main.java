@@ -1,4 +1,4 @@
-package com.company.Day14;
+package com.company.day14;
 
 import java.time.LocalTime;
 import java.util.Locale;
@@ -373,7 +373,7 @@ public class Main {
         }
 
         //Import method from my homework day 11
-        decNumber = com.company.Day11.Main.binaryConvertInteger(binNumber);
+        decNumber = com.company.day11.Main.binaryConvertInteger(binNumber);
 
         System.out.println("The string binary number - " + str + " = " + decNumber
                 + " decimal number.");

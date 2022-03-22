@@ -1,4 +1,4 @@
-package com.company.Day16;
+package com.company.day16;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
