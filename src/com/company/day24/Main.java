@@ -13,8 +13,8 @@ public class Main {
 //        printIfHaseNotDuplicate(array);
 //
 //        System.out.println(countDuplicateCharInString("babayagga"));
-        System.out.println(firstNonRepeatCharInString("uballbayyagad"));
-//        System.out.println(lengthWithoutRepeatingChar("abbal"));
+//        System.out.println(firstNonRepeatCharInString("uballbayyagad"));
+        System.out.println(lengthWithoutRepeatingChar("abackdefjah"));
     }
 
     /**
@@ -88,7 +88,7 @@ public class Main {
 
         for (Character ch1 : charHashMap.keySet()) {
 
-            if(charHashMap.get(ch1) > 0) {
+            if (charHashMap.get(ch1) > 0) {
 
                 countChar++;
             }
@@ -117,9 +117,9 @@ public class Main {
             }
         }
 
-        for (Character ch1: ch) {
+        for (char ch1 : ch) {
 
-            if(charHashMap.get(ch1) == 0) {
+            if (charHashMap.get(ch1) == 0) {
 
                 return ch1;
             }
@@ -137,13 +137,24 @@ public class Main {
     public static int lengthWithoutRepeatingChar(String str) {
 
         char[] ch = str.toCharArray();
-        Set<Character> integerSet = new HashSet<>();
+        Map<Character, Integer> charMap = new HashMap<>();
+        int maxLength = 0;
+        int length = 0;
 
-        for (int i = 0; i < ch.length; i++) {
+        for (char ch1 : ch) {
+            if (charMap.get(ch1) == null) {
 
-            integerSet.add(ch[i]);
+                charMap.put(ch1, 1);
+            } else {
+
+                charMap.put(ch1, charMap.get(ch1) + 1);
+            }
         }
 
-        return integerSet.size();
+        for (char ch1 : ch) {
+
+
+        }
+        return maxLength;
     }
 }
