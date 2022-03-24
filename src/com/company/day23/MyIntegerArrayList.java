@@ -7,7 +7,7 @@ public class MyIntegerArrayList implements MyList {
 
     private static final int DEF_CAPACITY = 10;
     private int capacity = DEF_CAPACITY;
-    public int size;
+    private int size;
     private int[] arrayList;
 
     //Constructor for class MyIntegerArrayList
@@ -87,10 +87,7 @@ public class MyIntegerArrayList implements MyList {
 
         int[] array = new int[size];
 
-        for (int i = 0; i < size; i++) {
-
-            array[i] = arrayList[i];
-        }
+        System.arraycopy(arrayList, 0, array, 0, size);
 
         return array;
     }
@@ -115,10 +112,9 @@ public class MyIntegerArrayList implements MyList {
      *
      * @param index int type
      * @param num   int type
-     * @throws IndexOutOfBoundsException
      */
     @Override
-    public void add(int index, int num) throws IndexOutOfBoundsException {
+    public void add(int index, int num) {
 
         if (index < 0 || index >= size) {
 
@@ -129,9 +125,9 @@ public class MyIntegerArrayList implements MyList {
             grow();
         }
 
-        for (int i = size; i >= index; i--) {
-
-            arrayList[i + 1] = arrayList[i];
+        if (size + 1 - index >= 0) {
+            System.arraycopy(arrayList, index, arrayList,
+                    index + 1, size + 1 - index);
         }
 
         arrayList[index] = num;
@@ -142,19 +138,18 @@ public class MyIntegerArrayList implements MyList {
      * Delete value in given place and shift right part to left
      *
      * @param index int type
-     * @throws IndexOutOfBoundsException
      */
     @Override
-    public void remove(int index) throws IndexOutOfBoundsException {
+    public void remove(int index) {
 
         if (index < 0 || index >= size) {
 
             throw new IndexOutOfBoundsException();
         }
 
-        for (int i = index; i < size - 1; i++) {
-
-            arrayList[i] = arrayList[i + 1];
+        if (size - 1 - index >= 0) {
+            System.arraycopy(arrayList, index + 1, arrayList, index,
+                    size - 1 - index);
         }
 
         arrayList[size - 1] = 0;
@@ -166,10 +161,9 @@ public class MyIntegerArrayList implements MyList {
      *
      * @param index int type
      * @return int type
-     * @throws IndexOutOfBoundsException
      */
     @Override
-    public int get(int index) throws IndexOutOfBoundsException {
+    public int get(int index) {
 
         if (index < 0 || index >= size) {
 
@@ -183,10 +177,9 @@ public class MyIntegerArrayList implements MyList {
      *
      * @param index int type
      * @param num   int type
-     * @throws IndexOutOfBoundsException
      */
     @Override
-    public void set(int index, int num) throws IndexOutOfBoundsException {
+    public void set(int index, int num) {
 
         if (index < 0 || index >= size) {
 
@@ -229,10 +222,10 @@ public class MyIntegerArrayList implements MyList {
         for (int i = 0; i < size; i++) {
 
             if (i == size - 1) {
-                str.append(arrayList[i] + "]");
+                str.append(arrayList[i]).append("]");
             } else {
 
-                str.append(arrayList[i] + " ");
+                str.append(arrayList[i]).append(" ");
             }
         }
 
@@ -260,9 +253,8 @@ public class MyIntegerArrayList implements MyList {
         capacity *= 2;
         array = new int[capacity];
 
-        for (int i = 0; i < size; i++) {
-
-            array[i] = arrayList[i];
+        if (size >= 0) {
+            System.arraycopy(arrayList, 0, array, 0, size);
         }
 
         arrayList = array;

@@ -8,7 +8,7 @@ public class Main {
 
         int array[] = {1, 2, 3, 4, 2, 3};
 
-//        System.out.println(isHaveDuplicate(array));
+//        System.out.println(hasDuplicate(array));
 //
 //        printIfHaseNotDuplicate(array);
 //
@@ -23,13 +23,13 @@ public class Main {
      * @param array int[] type
      * @return boolean type
      */
-    public static boolean isHaveDuplicate(int[] array) {
+    public static boolean hesDuplicate(int[] array) {
 
         Set<Integer> integerSet = new HashSet<>();
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i : array) {
 
-            if (!integerSet.add(array[i])) {
+            if (!integerSet.add(i)) {
 
                 return true;
             }
@@ -74,15 +74,16 @@ public class Main {
     public static int countDuplicateCharInString(String str) {
 
         Map<Character, Integer> charHashMap = new HashMap<>();
-        char[] ch = str.toCharArray();
+        char[] strChar = str.toCharArray();
         int countChar = 0;
 
-        for (char ch1 : ch) {
-            if (charHashMap.get(ch1) == null) {
-                charHashMap.put(ch1, 0);
+        for (char ch : strChar) {
+            if (charHashMap.get(ch) == null) {
+
+                charHashMap.put(ch, 1);
             } else {
 
-                charHashMap.put(ch1, 1);
+                charHashMap.put(ch, charHashMap.get(ch) + 1);
             }
         }
 
@@ -110,22 +111,23 @@ public class Main {
 
         for (char ch1 : ch) {
             if (charHashMap.get(ch1) == null) {
-                charHashMap.put(ch1, 0);
-            } else {
 
                 charHashMap.put(ch1, 1);
+            } else {
+
+                charHashMap.put(ch1, charHashMap.get(ch1) + 1);
             }
         }
 
         for (char ch1 : ch) {
 
-            if (charHashMap.get(ch1) == 0) {
+            if (charHashMap.get(ch1) == 1) {
 
                 return ch1;
             }
         }
 
-        return ' ';
+        throw new NoSuchElementException("String doesn't unique element");
     }
 
     /**

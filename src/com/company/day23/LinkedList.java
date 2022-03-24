@@ -28,33 +28,16 @@ public class LinkedList implements List {
 
         }
 
-        public int getVal() {
-            return val;
-        }
-
-        public void setVal(int val) {
-            this.val = val;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
     }
 
     private class LinkedListIterator implements Iterator<Integer> {
-
-        private int index;
 
 
         Node lastElement = head;
 
         @Override
         public boolean hasNext() {
-            return index < size;
+            return lastElement != null;
         }
 
         @Override
@@ -62,7 +45,6 @@ public class LinkedList implements List {
 
             int value = lastElement.val;
             lastElement = lastElement.next;
-            index++;
             return value;
         }
     }
@@ -70,15 +52,6 @@ public class LinkedList implements List {
     //Constructor for Node class
     public LinkedList() {
 
-    }
-
-    /**
-     * Get LinkedList head field
-     *
-     * @return Node reference type
-     */
-    public Node getHead() {
-        return head;
     }
 
     /**
@@ -111,7 +84,7 @@ public class LinkedList implements List {
      * in concrete please
      */
     @Override
-    public int get(int index) throws IndexOutOfBoundsException {
+    public int get(int index) {
 
         if (index < 0 || index >= size) {
 
@@ -124,7 +97,7 @@ public class LinkedList implements List {
 
             findElement = findElement.next;
         }
-        return findElement.getVal();
+        return findElement.val;
     }
 
     /**
@@ -156,9 +129,9 @@ public class LinkedList implements List {
      * in concrete please
      * */
     @Override
-    public void add(int index, int val) throws IndexOutOfBoundsException {
+    public void add(int index, int val) {
 
-        if (index < 0 || index >= size) {
+        if (index < 0 || index > size) {
 
             throw new IndexOutOfBoundsException();
         }
@@ -190,9 +163,9 @@ public class LinkedList implements List {
      * This method delete element in LinkedList class
      * in concrete please
      * */
-    public void delete(int index) throws IndexOutOfBoundsException {
+    public void delete(int index) {
 
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
 
             throw new IndexOutOfBoundsException();
         }
@@ -202,16 +175,17 @@ public class LinkedList implements List {
         if (index == 0) {
 
             head = findElement.next;
-            size--;
-            return;
+        } else {
+
+            for (int i = 0; i < index - 1; i++) {
+
+                findElement = findElement.next;
+            }
+
+            findElement.next = findElement.next.next;
+
         }
 
-        for (int i = 0; i < index - 1; i++) {
-
-            findElement = findElement.next;
-        }
-
-        findElement.setNext(findElement.next.next);
         size--;
     }
 
@@ -224,7 +198,7 @@ public class LinkedList implements List {
         if (size > 0) {
             for (int i = 0; findElement != null; i++) {
 
-                strLink.append(findElement.getVal());
+                strLink.append(findElement.val);
                 strLink.append(" -> ");
                 findElement = findElement.next;
 
