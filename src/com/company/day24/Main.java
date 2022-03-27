@@ -138,25 +138,11 @@ public class Main {
      */
     public static int lengthWithoutRepeatingChar(String str) {
 
-        char[] ch = str.toCharArray();
+        char[] strChar = str.toCharArray();
         Map<Character, Integer> charMap = new HashMap<>();
         int maxLength = 0;
         int length = 0;
 
-        for (char ch1 : ch) {
-            if (charMap.get(ch1) == null) {
-
-                charMap.put(ch1, 1);
-            } else {
-
-                charMap.put(ch1, charMap.get(ch1) + 1);
-            }
-        }
-
-        for (char ch1 : ch) {
-
-
-        }
         return maxLength;
     }
 }
