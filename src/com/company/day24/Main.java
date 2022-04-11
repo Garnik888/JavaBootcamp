@@ -14,7 +14,7 @@ public class Main {
 //
 //        System.out.println(countDuplicateCharInString("babayagga"));
 //        System.out.println(firstNonRepeatCharInString("uballbayyagad"));
-        System.out.println(lengthWithoutRepeatingChar("abackdefjah"));
+        System.out.println(lengthWithoutRepeatingChar("bcadaefbjh"));
     }
 
     /**
@@ -107,23 +107,23 @@ public class Main {
     public static char firstNonRepeatCharInString(String str) {
 
         Map<Character, Integer> charHashMap = new HashMap<>();
-        char[] ch = str.toCharArray();
+        char[] strChar = str.toCharArray();
 
-        for (char ch1 : ch) {
-            if (charHashMap.get(ch1) == null) {
+        for (char ch : strChar) {
+            if (charHashMap.get(ch) == null) {
 
-                charHashMap.put(ch1, 1);
+                charHashMap.put(ch, 1);
             } else {
 
-                charHashMap.put(ch1, charHashMap.get(ch1) + 1);
+                charHashMap.put(ch, charHashMap.get(ch) + 1);
             }
         }
 
-        for (char ch1 : ch) {
+        for (char ch : strChar) {
 
-            if (charHashMap.get(ch1) == 1) {
+            if (charHashMap.get(ch) == 1) {
 
-                return ch1;
+                return ch;
             }
         }
 
@@ -138,11 +138,21 @@ public class Main {
      */
     public static int lengthWithoutRepeatingChar(String str) {
 
-        char[] strChar = str.toCharArray();
-        Map<Character, Integer> charMap = new HashMap<>();
-        int maxLength = 0;
-        int length = 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int maximumLength = 0;
+        int start = 0;
 
-        return maxLength;
+        for (int end = 0; end < str.length(); end++) {
+
+            if (map.containsKey(str.charAt(end))) {
+
+                start = Math.max(start, map.get(str.charAt(end)) + 1);
+            }
+
+            map.put(str.charAt(end), end);
+            maximumLength = Math.max(maximumLength, end - start + 1);
+        }
+
+        return maximumLength;
     }
 }

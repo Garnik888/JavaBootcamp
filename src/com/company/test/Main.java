@@ -1,20 +1,39 @@
 package com.company.test;
 
-import java.util.*;
+import java.io.*;
 
 public class Main {
 
+
     public static void main(String[] args) {
 
+        String text = "Hello world!"; // строка для записи
+        try(FileOutputStream fos=new FileOutputStream("notes.txt"))
+        {
+            // перевод строки в байты
+            byte[] buffer = text.getBytes();
 
-        Set<Integer> integerSet = new HashSet<>();
+            fos.write(buffer);
+            System.out.println("The file has been written");
+        }
+        catch(IOException ex){
 
-        integerSet.add(1);
-        integerSet.add(8);
-        integerSet.add(4);
-        integerSet.add(3);
-        integerSet.add(2);
+            System.out.println(ex.getMessage());
+        }
 
-        System.out.println(integerSet);
+        try(FileInputStream fin=new FileInputStream("notes.txt"))
+        {
+            System.out.printf("File size: %d bytes \n", fin.available());
+
+            int i;
+            while((i=fin.read())!=-1){
+
+                System.out.print((char)i);
+            }
+        }
+        catch(IOException ex){
+
+            System.out.println(ex.getMessage());
+        }
     }
 }
